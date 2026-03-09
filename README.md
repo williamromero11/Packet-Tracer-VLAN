@@ -56,6 +56,4 @@ Router subinterfaces were configured to allow communication between VLAN network
 Each VLAN was assigned a /28 subnet to efficiently allocate IP addresses.
 
 ![VLAN Configuration](VLAN/Screenshot%202026-03-09%20093607.png)
----
 
-## Router Configuration (Example)
