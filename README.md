@@ -27,7 +27,7 @@ Each VLAN represents a separate logical network with its own subnet.
 
 Inter-VLAN communication is handled by router subinterfaces using 802.1Q tagging.
 
-![Topology](./Packet-Tracer-VLAN/VLAN/Screenshot%202026-03-09%20093509.png)
+![Network Topology](Packet-Tracer-VLAN/VLAN/Screenshot%202026-03-09%20093509.png)
 ---
 
 ## Technologies Used
