@@ -1,0 +1,80 @@
+! ============================================================
+!  Cisco Switch (SW1) - VLAN & Trunk Configuration
+!  Topology: Router-on-a-Stick (IEEE 802.1Q)
+! ============================================================
+
+enable
+configure terminal
+
+! --- Hostname ---
+hostname SW1
+
+! ============================================================
+!  Step 1: Create VLANs
+! ============================================================
+vlan 10
+ name HR
+vlan 20
+ name IT
+vlan 30
+ name Finance
+vlan 99
+ name Management
+
+! ============================================================
+!  Step 2: Assign Access Ports to VLANs
+! ============================================================
+
+! HR Department - VLAN 10
+interface FastEthernet0/1
+ description PC-HR
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+
+! IT Department - VLAN 20
+interface FastEthernet0/2
+ description PC-IT
+ switchport mode access
+ switchport access vlan 20
+ no shutdown
+
+! Finance Department - VLAN 30
+interface FastEthernet0/3
+ description PC-Finance
+ switchport mode access
+ switchport access vlan 30
+ no shutdown
+
+! Management - VLAN 99
+interface FastEthernet0/4
+ description PC-Mgmt
+ switchport mode access
+ switchport access vlan 99
+ no shutdown
+
+! ============================================================
+!  Step 3: Configure Trunk Port toward Router (802.1Q)
+! ============================================================
+interface GigabitEthernet0/1
+ description Trunk-to-R1
+ switchport mode trunk
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,99
+ no shutdown
+
+! ============================================================
+!  Step 4: Management Interface (optional, for SSH/Telnet)
+! ============================================================
+interface Vlan99
+ description Management-SVI
+ ip address 192.168.99.2 255.255.255.0
+ no shutdown
+
+ip default-gateway 192.168.99.1
+
+end
+
+! Save configuration
+copy running-config startup-config
