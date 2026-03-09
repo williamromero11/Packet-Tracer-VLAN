@@ -40,7 +40,7 @@ Inter-VLAN communication is handled by router subinterfaces using 802.1Q tagging
 - ICMP Connectivity Testing
 
 ---
-
+![VLAN Configuration](VLAN/Screenshot%202026-03-09%20093607.png)
 ## Key Networking Concepts Demonstrated
 
 ### VLAN Segmentation
